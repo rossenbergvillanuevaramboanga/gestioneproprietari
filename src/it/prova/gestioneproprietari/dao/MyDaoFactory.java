@@ -17,7 +17,7 @@ public class MyDaoFactory {
 		return automobileDAOInstance;
 	}
 
-	public static ProprietarioDAO getMunicipioDAOInstance(){
+	public static ProprietarioDAO getProprietarioDAOInstance(){
 		if(proprietarioDAOInstance == null)
 			proprietarioDAOInstance = new ProprietarioDAOImpl();
 		return proprietarioDAOInstance;

@@ -1,7 +1,5 @@
 package it.prova.gestioneproprietari.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,7 +26,7 @@ public class Automobile {
 	@Column(name = "targa")
 	private String targa;
 	@Column(name = "annoimmatricolazione")
-	private Date annoImmatricolazione; 
+	private Integer annoImmatricolazione; 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "proprietario_id")
 	private Proprietario proprietario; 
@@ -37,7 +35,7 @@ public class Automobile {
 		
 	}
 
-	public Automobile(String marca, String modello, String targa, Date annoImmatricolazione) {
+	public Automobile(String marca, String modello, String targa, Integer annoImmatricolazione) {
 		super();
 		this.marca = marca;
 		this.modello = modello;
@@ -77,11 +75,11 @@ public class Automobile {
 		this.targa = targa;
 	}
 
-	public Date getAnnoImmatricolazione() {
+	public Integer getAnnoImmatricolazione() {
 		return annoImmatricolazione;
 	}
 
-	public void setAnnoImmatricolazione(Date annoImmatricolazione) {
+	public void setAnnoImmatricolazione(Integer annoImmatricolazione) {
 		this.annoImmatricolazione = annoImmatricolazione;
 	}
 

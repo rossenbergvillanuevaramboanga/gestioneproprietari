@@ -1,12 +1,15 @@
 package it.prova.gestioneproprietari.dao.proprietario;
 
+
 import it.prova.gestioneproprietari.dao.IBaseDAO;
 import it.prova.gestioneproprietari.model.Proprietario;
 
 public interface ProprietarioDAO extends IBaseDAO<Proprietario>{
 	
-	//restituisce una lista di automobili i cui proprietari hanno un codice fiscale che inizia con una  string a piacere
+	//Conta Quanti Proprietari possiedono automobili immatricolate da un certo anno, fornito in input in poi
 	
-	//restituisce una lista di automobili con errori, cioè possedute da soggetti minori
+	public int countByProprietariWhereAnnoImmatricolazioneFrom(int input) throws Exception;
+	
+	
 
 }
