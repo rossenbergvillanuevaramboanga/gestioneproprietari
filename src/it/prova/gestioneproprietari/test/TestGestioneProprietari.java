@@ -31,20 +31,20 @@ public class TestGestioneProprietari {
 			testContaQuantiProprietariHannoAutoImmatricolateDopoProprietario(proprietarioService, automobileService);
 			System.out.println("In tabella proprietario ci sono " + proprietarioService.listAllProprietari().size()
 					+ " elementi. \n");
-			
-			//Test Metodi di Automobile
+
+			// Test Metodi di Automobile
 
 			testCRUDAutomobile(automobileService, proprietarioService);
 			System.out.println(
 					"In tabella automobile ci sono " + automobileService.listAllAutomobili().size() + " elementi. \n");
 
 			testCercaTutteConProprietarioCodiceFiscaleIniziaCon(automobileService, proprietarioService);
-			System.out.println("In tabella automobile ci sono " + automobileService.listAllAutomobili().size() + " elementi. \n");
-			
-//			testCercaTutteConErrore(automobileService, proprietarioService);
-//			System.out.println(
-//					"In tabella automobile ci sono " + automobileService.listAllAutomobili().size() + " elementi. \n");
-			
+			System.out.println(
+					"In tabella automobile ci sono " + automobileService.listAllAutomobili().size() + " elementi. \n");
+
+			testCercaTutteConErrore(automobileService, proprietarioService);
+			System.out.println(
+					"In tabella automobile ci sono " + automobileService.listAllAutomobili().size() + " elementi. \n");
 
 		} catch (Throwable e) {
 			e.printStackTrace();
@@ -54,26 +54,31 @@ public class TestGestioneProprietari {
 
 	}
 
-	private static void testCercaTutteConErrore(AutomobileService automobileService, ProprietarioService proprietarioService) throws Exception {
+	private static void testCercaTutteConErrore(AutomobileService automobileService,
+			ProprietarioService proprietarioService) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println(".......testCercaTutteConErrore inizio.............");
 
-// Proprietario
+
+		// Proprietario
 		Proprietario testProprietario = new Proprietario("Rossenberg", "Ramboanga", "RMBRSN97P07Z216A",
 				new SimpleDateFormat("dd-MM-yyyy").parse("07-09-2020"));
 		proprietarioService.inserisciNuovo(testProprietario);
 
-// Automobile
+
+		// Automobile
 		Automobile testAutomobile = new Automobile("Fiat", "500X", "DP235ZF", 2008);
 		testAutomobile.setProprietario(testProprietario);
 		automobileService.inserisciNuovo(testAutomobile);
 
-// PROPER TEST
+
+		// PROPER TEST
 		List<Automobile> result = automobileService.cercaTutteConErrore();
+		System.out.println(result);
 		if (result.size() != 1)
 			throw new RuntimeException("testCercaTutteConErrore fallito");
 
-// Delete
+		// Delete
 		automobileService.rimuovi(testAutomobile);
 		proprietarioService.rimuovi(testProprietario);
 
